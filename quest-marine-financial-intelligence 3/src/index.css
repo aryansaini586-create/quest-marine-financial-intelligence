@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-900: #003366;
+  --navy-950: #0A1628;
+  --teal-500: #007B8A;
+  --gold-500: #D4A843;
+  --gold-400: #E8C36A;
+}
+
+* { scrollbar-width: thin; scrollbar-color: var(--teal-500) transparent; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--teal-500); border-radius: 3px; }
+
+body { font-family: 'DM Sans', sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 dark:bg-navy-950/60 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-2xl shadow-lg;
+  }
+  .kpi-card {
+    @apply glass-card p-5 hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5;
+  }
+  .nav-tab {
+    @apply px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer select-none;
+  }
+  .nav-tab-active {
+    @apply bg-navy-900 text-white dark:bg-teal-500 shadow-lg;
+  }
+  .nav-tab-inactive {
+    @apply text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5;
+  }
+  .chat-bubble-user {
+    @apply bg-navy-900 text-white rounded-2xl rounded-br-md px-4 py-3 max-w-[80%] ml-auto;
+  }
+  .chat-bubble-bot {
+    @apply glass-card rounded-2xl rounded-bl-md px-4 py-3 max-w-[85%];
+  }
+  .badge-unaudited {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400;
+  }
+  .btn-primary {
+    @apply bg-navy-900 hover:bg-navy-800 dark:bg-teal-500 dark:hover:bg-teal-600 text-white font-medium px-4 py-2 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+  .btn-outline {
+    @apply border border-gray-300 dark:border-white/20 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 font-medium px-4 py-2 rounded-xl transition-all;
+  }
+}
+
+@keyframes wave {
+  0%, 100% { d: path("M0 20 Q25 10 50 20 T100 20 V40 H0 Z"); }
+  50% { d: path("M0 20 Q25 30 50 20 T100 20 V40 H0 Z"); }
+}
+
+.animate-typing span {
+  animation: blink 1.4s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
